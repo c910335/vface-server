@@ -1,0 +1,15 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+dlib = "*"
+gazetracking = {git = "https://github.com/tim-fan/GazeTracking.git"}
+opencv-python = "*"
+websockets = "*"
+
+[requires]
+python_version = "3.8"
