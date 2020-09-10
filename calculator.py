@@ -19,17 +19,17 @@ class Calculator:
     def eye_l_open(self):
         d = self.distance(self.points[43], self.points[44]) + self.distance(self.points[46], self.points[47])
         t = self.distance(self.points[43], self.points[47]) + self.distance(self.points[44], self.points[46])
-        return (t / d - 0.5) * 2
+        return (t / d - 0.2) * 2
 
     def eye_r_open(self):
         d = self.distance(self.points[37], self.points[38]) + self.distance(self.points[40], self.points[41])
         t = self.distance(self.points[37], self.points[41]) + self.distance(self.points[38], self.points[40])
-        return (t / d - 0.5) * 2
+        return (t / d - 0.2) * 2
 
     def eye_ball_x(self):
         ln = self.distance(self.points[36], self.points[68])
         rn = self.distance(self.points[42], self.points[69])
-        return (-1 + ln / (ln + self.distance(self.points[39], self.points[68])) + rn / (rn + self.distance(self.points[42], self.points[69]))) * 2
+        return (-1 + ln / (ln + self.distance(self.points[39], self.points[68])) + rn / (rn + self.distance(self.points[42], self.points[69]))) * 3
 
     def eye_ball_y(self):
         lt = self.middle(self.points[37], self.points[38])
@@ -38,7 +38,7 @@ class Calculator:
         rd = self.middle(self.points[46], self.points[47])
         ln = self.distance(ld, self.points[68])
         rn = self.distance(rd, self.points[69])
-        return (-1 + ln / (ln + self.distance(lt, self.points[68])) + rn / (rn + self.distance(rt, self.points[69]))) * 2
+        return (-1.3 + ln / (ln + self.distance(lt, self.points[68])) + rn / (rn + self.distance(rt, self.points[69]))) * 3
 
     def mouth_open_y(self):
         return (self.distance(self.points[62], self.points[66]) / self.distance(self.points[33], self.points[66])) * 2

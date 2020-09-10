@@ -28,7 +28,7 @@ async def handler(socket, path):
             await socket.send(f'EyeBallY {calc.eye_ball_y()}')
             await socket.send(f'MouthOpenY {calc.mouth_open_y()}')
             await socket.send(f'BodyAngleZ {calc.body_angle_z()}')
-            sleep(0.1)
+            sleep(0.2)
     await socket.close()
     connected = False
     print('Disconnect')
