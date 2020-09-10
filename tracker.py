@@ -19,16 +19,6 @@ class Tracker:
             return self.update_points()
         return False
 
-    def show(self):
-        for i, point in enumerate(self.points):
-            cv2.putText(self.frame, str(i), point, cv2.FONT_HERSHEY_COMPLEX, 0.25, (255, 255, 255))
-        cv2.imshow('WWW', self.frame)
-        if cv2.waitKey(10) == 113:
-            cv2.destroyAllWindows()
-            cv2.waitKey(1)
-            return False
-        return True
-
     def update_face(self):
         faces = self.detector(self.frame, 0)
         if faces:

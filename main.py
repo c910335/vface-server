@@ -3,6 +3,7 @@ import websockets
 from time import sleep
 from tracker import Tracker
 from calculator import Calculator
+from config import Config
 
 connected = False
 
@@ -28,12 +29,12 @@ async def handler(socket, path):
             await socket.send(f'EyeBallY {calc.eye_ball_y()}')
             await socket.send(f'MouthOpenY {calc.mouth_open_y()}')
             await socket.send(f'BodyAngleZ {calc.body_angle_z()}')
-            sleep(0.2)
+            sleep(Config['DELAY'] / 1000)
     await socket.close()
     connected = False
     print('Disconnect')
 
-server = websockets.serve(handler, 'localhost', 5566)
+server = websockets.serve(handler, 'localhost', Config['PORT'])
 asyncio.get_event_loop().run_until_complete(server)
 asyncio.get_event_loop().run_forever()
 
