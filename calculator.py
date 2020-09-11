@@ -17,14 +17,14 @@ class Calculator:
         return math.atan2(self.points[27][0] - self.points[33][0],  self.points[33][1] - self.points[27][1]) * 100
     
     def eye_l_open(self):
-        d = self.distance(self.points[43], self.points[44]) + self.distance(self.points[46], self.points[47])
         t = self.distance(self.points[43], self.points[47]) + self.distance(self.points[44], self.points[46])
-        return (t / d - 0.2) * 2
+        d = self.distance(self.points[23], self.points[43]) + self.distance(self.points[24], self.points[44])
+        return (t / d - 0.15) * 7
 
     def eye_r_open(self):
-        d = self.distance(self.points[37], self.points[38]) + self.distance(self.points[40], self.points[41])
         t = self.distance(self.points[37], self.points[41]) + self.distance(self.points[38], self.points[40])
-        return (t / d - 0.2) * 2
+        d = self.distance(self.points[19], self.points[37]) + self.distance(self.points[20], self.points[38])
+        return (t / d - 0.15) * 7
 
     def eye_ball_x(self):
         ln = self.distance(self.points[36], self.points[68])
