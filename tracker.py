@@ -9,6 +9,7 @@ class Tracker:
         self.detector = dlib.get_frontal_face_detector()
         self.predictor = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat')
         self.gaze = GazeTracking()
+        self.gaze._face_detector = lambda f : [self.face]
         self.frame = None
         self.face = None
         self.points = None
