@@ -1,4 +1,4 @@
 Config = {
-    'DELAY': 10,
+    'DELAY': 1,
     'PORT': 5566
 }

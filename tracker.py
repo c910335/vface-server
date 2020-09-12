@@ -5,7 +5,8 @@ from gaze_tracking import GazeTracking
 class Tracker:
     def __init__(self):
         self.cam = cv2.VideoCapture(0)
-        self.width = self.cam.get(cv2.CAP_PROP_FRAME_WIDTH)
+        self.width = int(self.cam.get(cv2.CAP_PROP_FRAME_WIDTH) / 4)
+        self.height = int(self.cam.get(cv2.CAP_PROP_FRAME_HEIGHT) / 4)
         self.detector = dlib.get_frontal_face_detector()
         self.predictor = dlib.shape_predictor('shape_predictor_68_face_landmarks.dat')
         self.gaze = GazeTracking()
@@ -15,7 +16,9 @@ class Tracker:
         self.points = None
 
     def update(self):
-        _, self.frame = self.cam.read()
+        _, frame = self.cam.read()
+        self.frame = cv2.resize(frame, (self.width, self.height))
+        cv2.cvtColor(self.frame, cv2.COLOR_BGR2GRAY)
         if self.update_face():
             return self.update_points()
         return False
@@ -36,7 +39,7 @@ class Tracker:
             points.append((point.x, point.y))
         points.append(self.gaze.pupil_left_coords())
         points.append(self.gaze.pupil_right_coords())
-        if all(point for point in points):
+        if all(point for point in points[:68]):
             self.points = points
             return True
         return False

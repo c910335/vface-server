@@ -17,8 +17,8 @@ async def handler(socket, path):
 
     tracker = Tracker()
     calc = Calculator(tracker.width)
-    try:
-        while True:
+    while True:
+        try:
             if tracker.update():
                 calc.update(tracker.points)
                 await socket.send(f'AngleX {calc.angle_x()}')
@@ -31,9 +31,12 @@ async def handler(socket, path):
                 await socket.send(f'MouthOpenY {calc.mouth_open_y()}')
                 await socket.send(f'BodyAngleZ {calc.body_angle_z()}')
                 sleep(Config['DELAY'] / 1000)
-    except websockets.exceptions.ConnectionClosedError:
-        connected = False
-        print('Disconnect')
+        except websockets.exceptions.ConnectionClosedError:
+            connected = False
+            print('Disconnect')
+            break
+        except Exception as e:
+            print(e)
 
 
 server = websockets.serve(handler, 'localhost', Config['PORT'])
