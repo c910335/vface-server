@@ -7,9 +7,9 @@ verify_ssl = true
 
 [packages]
 dlib = "*"
-gazetracking = {git = "https://github.com/tim-fan/GazeTracking.git"}
+gaze_tracking = {git = "https://github.com/tim-fan/GazeTracking.git"}
 opencv-python = "*"
 websockets = "*"
 
 [requires]
-python_version = "3.8"
+python_version = "3.11.3"
